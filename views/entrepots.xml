@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_form_entrepot" model="ir.ui.view">
+            <field name="name">view.form.entrepot</field>
+            <field name="model">parcinfo.entrepot</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <div class="oe_title" colspan="4">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Nom"/>
+                            </h1>
+                        </div>
+                        <group>
+<!--                            <separator string="Identifiant" colspan="1"/>-->
+                            <group>
+                                <field name="code" string="Code"/>
+
+                            </group>
+                            <group>
+                                <field name="adresse" placeholder="EX: direction générale"/>
+                                <field name="description" string="Description"/>
+                            </group>
+
+                        </group>
+                        <notebook colspan="6" col="4">
+                            <page string="Produits">
+                                <group>
+                                    <field name="articles_ids"/>
+                                </group>
+                            </page>
+                            <page string="Division(courloir)">
+                                <group>
+                                    <field name="allee_ids" string="Allées"/>
+                                </group>
+                            </page>
+                            <page string="Rangées">
+                                <group>
+                                    <field name="rangée_ids" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_action_entrepot" model="ir.actions.act_window">
+            <field name="name">view.action.entrepot</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parcinfo.entrepot</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <record id="view_action_allee" model="ir.actions.act_window">
+            <field name="name">view.Action.allee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parcinfo.allee.entrepot</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="view_action_rangee" model="ir.actions.act_window">
+            <field name="name">view.Action.rangee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parcinfo.rangee.entrepot</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="view_action_etage" model="ir.actions.act_window">
+            <field name="name">view.action.etage</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parcinfo.etage.entrepot</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menu_configuration" name="Configuration" parent="parcinfo.parc_root" sequence="3"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menu_cat_entrepot" name="Entrepot &amp; emplacement" parent="menu_configuration" sequence="1"/>
+
+        <menuitem id="menu_action_entrepot" name="Entrepot" parent="menu_cat_entrepot" action="view_action_entrepot" sequence="1"/>
+        <menuitem id="menu_action_allee" name="Allée" parent="menu_cat_entrepot" action="view_action_allee" sequence="2"/>
+        <menuitem id="menu_action_rangee" name="Rangée" parent="menu_cat_entrepot" action="view_action_rangee" sequence="3"/>
+        <menuitem id="menu_action_etage" name="Etage" parent="menu_cat_entrepot" action="view_action_etage" sequence="4"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="form_artilces" model="ir.ui.view">
+            <field name="name">form.articles</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <!-- Add your fields or attributes here -->
+                     <field name="entrepot_id"/>
+
+                </xpath>
+
+                <xpath expr="//page[@name='variants']" position="replace">
+                    <page name="Identifiant" string="Identifiants">
+                        <group>
+                            <field name="n_serie" placeholder="Ex..12356EN"/>
+                            <field name="n_parc" placeholder="Ex..2018LPT12"/>
+                        </group>
+                    </page>
+                    <!-- Add your fields or attributes here -->
+
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="tree_view" model="ir.ui.view">
+            <field name="name">tree.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <!-- Add new fields here -->
+                    <field name="n_parc"/>
+                    <field name="n_serie"/>
+                </xpath>
+                <xpath expr="//field[@name='list_price']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="view_action_article" model="ir.actions.act_window">
+            <field name="name">view.action.article</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="parc_requete" name="Article" parent="parcinfo.parc_root" sequence="2"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="parc_article" name="Article" parent="parcinfo.parc_requete" action="view_action_article" sequence="1"/>
+    </data>
+</odoo>

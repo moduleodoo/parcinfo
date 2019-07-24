@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_parcinfo_parcinfo_manager,parcinfo.request,model_parcinfo_request,base.group_user,1,1,1,1
+access_parcinfo_entrepot_manager,parcinfo.entreppot,model_parcinfo_entrepot,base.group_user,1,1,1,1
+access_parcinfo_allee_entrepot_manager,parcinfo.allee.entreppot,model_parcinfo_allee_entrepot,base.group_user,1,1,1,1
+access_parcinfo_rangee_entrepot_manager,parcinfo.rangee.entreppot,model_parcinfo_rangee_entrepot,base.group_user,1,1,1,1
+access_parcinfo_etage_entrepot_manager,parcinfo.etage.entreppot,model_parcinfo_etage_entrepot,base.group_user,1,1,1,1

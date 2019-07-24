@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_request" model="ir.ui.view">
+            <field name="name">form.request</field>
+            <field name="model">parcinfo.request</field>
+            <field name="arch" type="xml">
+                <form string="form_request_view">
+                    <header>
+                      <field name="state"  widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="articles"/>
+                            <field name="date_request"/>
+                            <field name="artilces"/>
+                            <field name="description_return"/>
+                        </group>
+                    </sheet>
+                  <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                  </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_action_resquest" model="ir.actions.act_window">
+            <field name="name">view.action.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parcinfo.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="parc_root" name="Parc Informatique" sequence="1"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="request_action" name="Requêtes" parent="parc_root" action="view_action_resquest" sequence="1"/>
+    </data>
+</odoo>
